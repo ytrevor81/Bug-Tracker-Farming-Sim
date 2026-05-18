@@ -571,3 +571,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+#Other
+keys.txt
