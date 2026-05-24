@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<AppDbContext>(options => 
 options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -15,17 +16,5 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.MapControllers();
 app.Run();
-// app.MapGet("/weatherforecast", () =>
-// {
-    // var forecast =  Enumerable.Range(1, 5).Select(index =>
-        // new WeatherForecast
-        // (
-            // DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            // Random.Shared.Next(-20, 55),
-            // summaries[Random.Shared.Next(summaries.Length)]
-        // ))
-        // .ToArray();
-    // return forecast;
-// })
-// .WithName("GetWeatherForecast");
